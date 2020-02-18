@@ -1,0 +1,19 @@
+---
+- name: reload systemctl
+  systemd:
+    daemon_reload: yes
+
+- name: start systemd_timer
+  systemd:
+    name: "{{ systemd_timer__name }}"
+    state: started
+
+- name: enable systemd_timer
+  systemd:
+    name: "{{ systemd_timer__name }}.timer"
+    enabled: "{{ systemd_timer__enabled }}"
+
+- name: activate systemd_timer
+  systemd:
+    name: "{{ systemd_timer__name }}.timer"
+    state: started

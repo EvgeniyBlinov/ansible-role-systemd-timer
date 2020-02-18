@@ -1,0 +1,18 @@
+---
+# @var string Service filename prefix
+systemd_timer__name: example-script
+systemd_timer__description: systemd_timer example
+systemd_timer__exec_start: echo ok
+
+systemd_timer__timer_on_calendar: '*-*-* 2:00:00'
+
+########################################################################
+systemd_timer__run_after_install: no
+systemd_timer__notify_actions:
+  - reload systemctl
+  - enable systemd_timer
+  - activate systemd_timer
+
+systemd_timer__state: present
+systemd_timer__enabled: yes
+

@@ -1,0 +1,8 @@
+[Unit]
+Description={{ systemd_timer__description }}
+
+[Service]
+Type=oneshot
+ExecStart={{ systemd_timer__exec_start }}
+User=root
+Group=systemd-journal

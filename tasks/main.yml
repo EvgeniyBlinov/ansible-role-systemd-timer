@@ -1,0 +1,6 @@
+---
+- include_tasks: install.yml
+  when: systemd_timer__state != 'absent'
+
+- include_tasks: uninstall.yml
+  when: systemd_timer__state == 'absent'

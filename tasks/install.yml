@@ -1,0 +1,19 @@
+---
+- set_fact:
+    systemd_timer__notify_actions: "{{
+      systemd_timer__notify_actions + ['start systemd_timer']
+    }}"
+  when: systemd_timer__run_after_install | bool
+
+- name: "systemd_timer | Generate service for {{ systemd_timer__name }}"
+  template:
+    src: "etc/systemd/system/systemd_timer.{{ item }}"
+    dest: "/etc/systemd/system/{{ systemd_timer__name }}.{{ item }}"
+    force: yes
+  loop:
+    - service
+    - timer
+
+- debug: msg="Done"
+  changed_when: true
+  notify: "{{ systemd_timer__notify_actions }}"

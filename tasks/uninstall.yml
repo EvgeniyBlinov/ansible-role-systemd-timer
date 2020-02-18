@@ -1,0 +1,9 @@
+---
+- name: "systemd_timer | Generate service for {{ systemd_timer__name }}"
+  file:
+    path: "/etc/systemd/system/{{ systemd_timer__name }}.{{ item }}"
+    state: absent
+  notify: "{{ systemd_timer__notify_actions }}"
+  loop:
+    - service
+    - timer

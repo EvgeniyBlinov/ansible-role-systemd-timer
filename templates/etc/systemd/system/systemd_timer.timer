@@ -1,0 +1,9 @@
+[Unit]
+Description=Timer for {{ systemd_timer__description }}
+
+[Timer]
+OnCalendar={{ systemd_timer__timer_on_calendar }}
+Persistent=true
+
+[Install]
+WantedBy=timers.target
