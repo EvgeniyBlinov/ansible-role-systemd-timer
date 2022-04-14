@@ -6,6 +6,9 @@ systemd_timer__exec_start: echo ok
 
 systemd_timer__timer_on_calendar: '*-*-* 2:00:00'
 
+systemd_timer__env_vars:
+  EDITOR: vim
+
 ########################################################################
 systemd_timer__run_after_install: no
 systemd_timer__notify_actions:

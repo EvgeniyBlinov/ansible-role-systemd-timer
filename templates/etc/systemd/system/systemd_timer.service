@@ -2,6 +2,9 @@
 Description={{ systemd_timer__description }}
 
 [Service]
+{% for env, value in systemd_timer__env_vars.items() %}
+Environment="{{ env }}={{ value }}"
+{% endfor %}
 Type=oneshot
 ExecStart={{ systemd_timer__exec_start }}
 User=root
